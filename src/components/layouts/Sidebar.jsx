@@ -14,6 +14,18 @@ export default function Sidebar() {
       {menu ? (
         <h2 className="me-4 pt-4">
           Sidebar: pulsante Reset che riporta la temperatura a 20°C
+          {/* function handleResetTemperature() {
+    setTemperature(20);
+  }
+  
+  <button
+            className="border bg-yellow-300 py-2 px-4 rounded-xl"
+            onClick={handleResetTemperature}
+          >
+            Reset
+          </button>
+
+  */}
         </h2>
       ) : (
         ""
