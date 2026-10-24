@@ -5,12 +5,17 @@ import Footer from "./components/layouts/Footer";
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-dvh">
       <Header />
-      <MainContent />
-      <Sidebar />
-      <Footer />
-    </>
+      <div className="flex flex-col flex-1">
+        <div className="flex flex-1">
+          <MainContent />
+          <Sidebar />
+        </div>
+
+        <Footer />
+      </div>
+    </div>
   );
 }
 
