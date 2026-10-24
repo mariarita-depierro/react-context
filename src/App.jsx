@@ -3,17 +3,38 @@ import MainContent from "./components/layouts/MainContent";
 import Sidebar from "./components/layouts/Sidebar";
 import Footer from "./components/layouts/Footer";
 
+import { useState } from "react";
+
 function App() {
+  const [temperature, setTemperature] = useState(20);
+
+  function handleAddTemperature() {
+    setTemperature((actual) => actual + 1);
+  }
+
+  function handleSubTemperature() {
+    setTemperature((actual) => actual - 1);
+  }
+
+  function handleResetTemperature() {
+    setTemperature(20);
+  }
+
   return (
     <div className="flex flex-col min-h-dvh">
       <Header />
       <div className="flex flex-col flex-1">
         <div className="flex flex-1">
-          <MainContent />
-          <Sidebar />
+          <MainContent
+            temperature={temperature}
+            handleAddTemperature={handleAddTemperature}
+            handleSubTemperature={handleSubTemperature}
+            handleResetTemperature={handleResetTemperature}
+          />
+          <Sidebar handleResetTemperature={handleResetTemperature} />
         </div>
 
-        <Footer />
+        <Footer temperature={temperature} />
       </div>
     </div>
   );
