@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import ThermostatContext from "../../contexts/ThermostatContext";
+import { useThermostatContext } from "../../contexts/ThermostatContext";
 import ResetButton from "../ui/ResetButton";
 
 export default function ThermostatSection() {
   const { temperature, handleAddTemperature, handleSubTemperature } =
-    useContext(ThermostatContext);
+    useThermostatContext();
 
   /*Utilizzando uno stato derivato renderizziamo un etichetta testuale (Freddo / Comfort / Caldo) in base al valore del termostato*/
   const temperatureStatus = (temperature) =>
