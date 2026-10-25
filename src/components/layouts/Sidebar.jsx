@@ -1,23 +1,22 @@
 import { MenuIcon } from "lucide-react";
 import { useState } from "react";
+import ResetButton from "../ui/ResetButton";
 
-export default function Sidebar({ handleResetTemperature }) {
-  const [menu, setMenu] = useState(false);
+export default function Sidebar() {
+  const [isClicked, setIsClicked] = useState(false);
 
-  function handleSetMenu() {
-    setMenu((actual) => !actual);
+  function handleIsClicked() {
+    setIsClicked((actual) => !actual);
   }
 
   return (
-    <aside dir="ltr" className="border-s border-gray-400 ps-4 pe-4 pt-2">
-      <MenuIcon onClick={handleSetMenu}></MenuIcon>
-      {menu ? (
-        <button
-          className="me-4 mt-4 border bg-yellow-500 py-2 px-4 rounded-xl cursor-pointer"
-          onClick={handleResetTemperature}
-        >
-          Reset
-        </button>
+    <aside className="relative pt-2">
+      <MenuIcon
+        className="fixed top-22 right-2 cursor-pointer me-2"
+        onClick={handleIsClicked}
+      ></MenuIcon>
+      {isClicked ? (
+        <ResetButton className="absolute top-20 right-4 font-bold"></ResetButton>
       ) : (
         ""
       )}

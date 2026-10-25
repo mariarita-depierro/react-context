@@ -4,6 +4,7 @@ import Sidebar from "./components/layouts/Sidebar";
 import Footer from "./components/layouts/Footer";
 
 import { useState } from "react";
+import ThermostatContext from "./contexts/ThermostatContext";
 
 function App() {
   const [temperature, setTemperature] = useState(20);
@@ -22,20 +23,25 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-dvh">
-      <Header />
-      <div className="flex flex-col flex-1">
-        <div className="flex flex-1">
-          <MainContent
-            temperature={temperature}
-            handleAddTemperature={handleAddTemperature}
-            handleSubTemperature={handleSubTemperature}
-            handleResetTemperature={handleResetTemperature}
-          />
-          <Sidebar handleResetTemperature={handleResetTemperature} />
-        </div>
+      {/* Trasmissione dei valori */}
+      <ThermostatContext
+        value={{
+          temperature,
+          handleAddTemperature,
+          handleResetTemperature,
+          handleSubTemperature,
+        }}
+      >
+        <Header />
+        <div className="flex flex-col flex-1">
+          <div className="flex flex-1">
+            <MainContent />
+            <Sidebar />
+          </div>
 
-        <Footer temperature={temperature} />
-      </div>
+          <Footer />
+        </div>
+      </ThermostatContext>
     </div>
   );
 }
