@@ -6,7 +6,7 @@ export default function ThermostatSection() {
   const { temperature, handleAddTemperature, handleSubTemperature } =
     useContext(ThermostatContext);
 
-  /* etichetta testuale (Freddo / Comfort / Caldo) */
+  /*Utilizzando uno stato derivato renderizziamo un etichetta testuale (Freddo / Comfort / Caldo) in base al valore del termostato*/
   const temperatureStatus = (temperature) =>
     temperature === 20 ? "Comfort" : temperature < 20 ? "Freddo" : "Caldo";
   return (

@@ -3,35 +3,13 @@ import MainContent from "./components/layouts/MainContent";
 import Sidebar from "./components/layouts/Sidebar";
 import Footer from "./components/layouts/Footer";
 
-import { useState } from "react";
-import ThermostatContext from "./contexts/ThermostatContext";
+import { ThermostatContextProvider } from "./contexts/ThermostatContext";
 
 function App() {
-  const [temperature, setTemperature] = useState(20);
-
-  function handleAddTemperature() {
-    setTemperature((actual) => actual + 1);
-  }
-
-  function handleSubTemperature() {
-    setTemperature((actual) => actual - 1);
-  }
-
-  function handleResetTemperature() {
-    setTemperature(20);
-  }
-
   return (
     <div className="flex flex-col min-h-dvh">
       {/* Trasmissione dei valori */}
-      <ThermostatContext
-        value={{
-          temperature,
-          handleAddTemperature,
-          handleResetTemperature,
-          handleSubTemperature,
-        }}
-      >
+      <ThermostatContextProvider>
         <Header />
         <div className="flex flex-col flex-1">
           <div className="flex flex-1">
@@ -41,7 +19,7 @@ function App() {
 
           <Footer />
         </div>
-      </ThermostatContext>
+      </ThermostatContextProvider>
     </div>
   );
 }
@@ -62,3 +40,7 @@ Usare la Context API per passare i valori / funzioni di stato globali nei compon
 Bonus
 I pulsanti Più e Meno devono essere disabilitati quando si raggiunge il limite minimo o massimo
 Mostrare accanto alla temperatura un'etichetta testuale (Freddo / Comfort / Caldo) calcolata dal valore, senza creare un secondo stato (derived state). */
+
+/* 
+------------------------------------------------------------------------------------------
+Adattare ultimo esercizio assegnato (React Context API) con context , provider e custom hook in un file dedicato. */
